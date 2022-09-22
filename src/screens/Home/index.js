@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image } from 'react-native';
 import styles from './style.js'
 import Header from '../../Components/Header/index.js';
+import { TouchableOpacity } from 'react-native-web';
 
 function Option({ navigation }) {
 
@@ -25,6 +26,9 @@ function Option({ navigation }) {
             </View>
 
             <View style={styles.viewMsg}>
+                <TouchableOpacity onPress={() => navigation.navigate("EditPage")}>
+                    <Text>Add +</Text>
+                </TouchableOpacity> 
                 <Text style={styles.msgOla}>Olá, Matheus</Text>
                 <Text style={styles.txtBemVindo}>Bem-vindo ao app de receitas InfoBolos</Text>
             </View>

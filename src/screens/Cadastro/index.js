@@ -24,6 +24,9 @@ function Cadastro({ navigation }) {
       if (response.data === 1) {
         navigation.navigate('Home')
       }
+      else{
+        alert('Senha ou email incorreto, tente novamente')
+      }
     })
     .catch((err) => console.log(err))
   }

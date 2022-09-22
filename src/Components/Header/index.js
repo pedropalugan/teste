@@ -1,14 +1,13 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './style.js'
 
-function Header() {
+function Header({ navigation }) {
+
+
     return (
         <View style={styles.viewHeaderBandeira}>
             <Image style={styles.imgHeader} source={require("../../../assets/logo.png")}/>
-            <View style={styles.viewHeader}>
-            <Text style={styles.txtHeader}>Add +</Text>
-            </View>
         </View>
     );
 }

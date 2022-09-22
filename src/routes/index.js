@@ -7,8 +7,10 @@ import StatusVoo from "../screens/StatusVoo";
 import DestinySant from "../screens/DestinySant";
 import HomeVi from '../screens/HomeVi';
 import BolosVi from '../screens/BolosVi';
+import EditPage from "../screens/postPage";
 
 const Rotas = {
+
   
   Login: {
     nome: "Login",
@@ -43,6 +45,11 @@ const Rotas = {
   BolosVi:{
     nome: "BolosVi",
     screen: BolosVi
+  },
+
+  EditPage:{
+    nome : "EditPage",
+    screen : EditPage
   },
   
   
