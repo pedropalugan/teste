@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image } from 'react-native';
 import styles from './style.js'
 import Header from '../../Components/Header/index.js';
 import { TouchableOpacity } from 'react-native-web';
+import Axios from 'axios';
 
 function Option({ navigation }) {
 
-    function back(){
-        navigation.navigate("Login")
+    let array_uri = []
+    let array_tit = []
+    let array_modo = []
+    let array_ing = []
+
+    const [uri, setUri] = useState([])
+    const [titulo, setTitulo] = useState([])
+    const [ing, setIng] = useState([])
+    const [modo, setModo] = useState([])
+
+
+
+
+    useEffect(() => {
+        Axios.get('http://localhost:3000/')
+            .then((response) => {
+                for (let x = 0; x < response.data.length; x++) {
+                    array_uri.push(response['data'][x]['id'])
+                    array_tit.push(response['data'][x]['titulo'])
+                    array_modo.push(response['data'][x]['modo'])
+                    array_ing.push(response['data'][x]['ing'])
+                }
+                setUri(array_uri)
+                setTitulo(array_tit)
+                setModo(array_modo)
+                setIng(array_ing)
+                
+            })
+            .catch((err) => console.log(err))
+    }, [])
+
+    function back(id_params) {
+        navigation.navigate("Login", {
+            id : id_params
+        })
     }
 
-    function destNavegation(){
-        navigation.navigate("DestinySant")
-    }
 
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
+            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
 
             <Header />
 
@@ -26,42 +57,30 @@ function Option({ navigation }) {
             </View>
 
             <View style={styles.viewMsg}>
-                <TouchableOpacity onPress={() => navigation.navigate("EditPage")}>
+                <TouchableOpacity onPress={() => navigation.navigate("PostPage")}>
                     <Text>Add +</Text>
-                </TouchableOpacity> 
+                </TouchableOpacity>
                 <Text style={styles.msgOla}>Olá, Matheus</Text>
                 <Text style={styles.txtBemVindo}>Bem-vindo ao app de receitas InfoBolos</Text>
             </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
+            {uri.map(index => (
+                <View>
+                <Image key={index} style={{
+                    width: 300,
+                    height: 300,
+                }}
+                    source={{ uri: `http://localhost:3000/${index}.png` }}
+                />
+            <View style={styles.viewContainer}>
+                <TouchableOpacity style={styles.btn} title="Cadastro" onPress={() => back(index)}>
+                    <Text style={styles.txtBtn}>Editar</Text>
+                </TouchableOpacity>
             </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
                 </View>
-            </View>
+                
+            ))}
 
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
 
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
 
         </View>
     );

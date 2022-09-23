@@ -4,14 +4,18 @@ import Login from "../screens/Login";
 import Home from "../screens/Home";
 import Cadastro from "../screens/Cadastro";
 import StatusVoo from "../screens/StatusVoo";
-import DestinySant from "../screens/DestinySant";
+
 import HomeVi from '../screens/HomeVi';
 import BolosVi from '../screens/BolosVi';
-import EditPage from "../screens/postPage";
+import PostPage from "../screens/postPage";
 
 const Rotas = {
 
-  
+  Home: {
+    nome: "Home",
+    screen: Home,
+  },
+
   Login: {
     nome: "Login",
     screen: Login,
@@ -22,20 +26,12 @@ const Rotas = {
     screen: Cadastro,
   },
   
-  Home: {
-    nome: "Home",
-    screen: Home,
-  },
 
   StatusVoo:{
     nome : "StatusVoo",
     screen: StatusVoo
   },
 
-  DestinySant:{
-    nome: "DestinySant",
-    screen: DestinySant
-  },
 
   HomeVi:{
     nome: "HomeVi",
@@ -46,12 +42,10 @@ const Rotas = {
     nome: "BolosVi",
     screen: BolosVi
   },
-
-  EditPage:{
-    nome : "EditPage",
-    screen : EditPage
+  PostPage:{
+    nome : "PostPage",
+    screen : PostPage
   },
-  
   
 };
 // Criar as Rotas

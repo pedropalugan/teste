@@ -13,6 +13,8 @@ import {
 import styles from "./style";
 function Login({ navigation }) {
 
+  console.log(navigation.state.params.id)
+
   function homeNavegation() {
       navigation.navigate("HomeVi");
   }

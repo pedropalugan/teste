@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
-/* import styles from './style.js' */
+import styles from '../Home/style'
 import Axios from 'axios'
 
-export default function EditPage(){
+export default function PostPage(){
 
     const [img, setImg] = useState(null)
     const [titulo, setTitulo] = useState('')
