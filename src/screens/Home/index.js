@@ -40,7 +40,7 @@ function Option({ navigation }) {
     }, [])
 
     function back(id_params) {
-        navigation.navigate("Login", {
+        navigation.navigate("EditPage", {
             id : id_params
         })
     }

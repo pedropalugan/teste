@@ -4,7 +4,7 @@ import Login from "../screens/Login";
 import Home from "../screens/Home";
 import Cadastro from "../screens/Cadastro";
 import StatusVoo from "../screens/StatusVoo";
-
+import EditPage from "../screens/EditPage";
 import HomeVi from '../screens/HomeVi';
 import BolosVi from '../screens/BolosVi';
 import PostPage from "../screens/postPage";
@@ -14,6 +14,11 @@ const Rotas = {
   Home: {
     nome: "Home",
     screen: Home,
+  },
+
+  EditPage: {
+    nome: "EditPage",
+    screen: EditPage
   },
 
   Login: {
