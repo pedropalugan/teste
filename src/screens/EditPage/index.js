@@ -20,7 +20,7 @@ export default function EditPage({ navigation }){
 
 
     useEffect(() => {
-        Axios.get(`http://localhost:3000/${navigation.state.params.id}`)
+        Axios.get(`http://localhost:3000/${navigation.state.params.id}`) //it gets the correspondent data from the displayed screen
             .then((response) => {
                 console.log(response)
                 setTitulo(response.data.titulo)
