@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './style.js'
-import Header from '../../Components/Header/index.js';
+import Axios from 'axios'
+
 
 function HomeVi({ navigation }) {
 
-    function back(){
-        navigation.navigate("Login")
-    }
+    let listaId = []
+    const [uri, setUri] = useState([])
 
-    function destNavegation(){
-        navigation.navigate("BolosVi")
+
+
+    useEffect(() => {
+        Axios.get("http://localhost:3000/")
+        .then((response) => {
+            for(let x = 0; x < response.data.length; x++){
+                listaId.push(response['data'][x]['id'])
+            } 
+            setUri(listaId)
+        })
+        .catch((err) => console.log(err))
+    }, [])
+
+    function recipePage(id){
+        navigation.navigate("RecipePage", {
+            id : id
+        })
     }
 
     return (
@@ -23,7 +38,7 @@ function HomeVi({ navigation }) {
             </View>
 
             <View style={styles.viewMsg}>
-                <Text style={styles.seta} onPress={() => back()}>⬅</Text>
+                <Text style={styles.seta} onPress={() => navigation.navigate("Login")}>⬅</Text>
             </View>
 
             <View style={styles.viewMsg}>
@@ -31,35 +46,32 @@ function HomeVi({ navigation }) {
                 <Text style={styles.txtBemVindo}>Bem-vindo ao app de receitas InfoBolos</Text>
             </View>
 
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
+            {uri.map(index => (
+                <View>
+                    <Image source={{uri : `http://localhost:3000/${index}.png`}} style={{
+                        width: 300,
+                        height: 300,
+                    }}/>
+            <View style={styles.viewContainer}>
+                <TouchableOpacity style={{
+                    width: '50%',
+                    borderColor: '#E398AA',
+                    borderWidth: 2,
+                    borderRadius: 40,
+                    height: '60%',
+                    marginBottom: '10%',
+                    textAlign: 'center',
+                }} title="Cadastro" onPress={() => recipePage(index)}>
+                    <Text style={{
+                        color: '#E398AA',
+                        fontWeight: 600,
+                        fontSize: 20,
+                        marginTop: 7,
+                    }}>Ver receita</Text>
+                </TouchableOpacity>
             </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
                 </View>
-            </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
-
-            <View style={styles.viewLogo} onPress={() => navigation.navigate('Cadastro')}>
-                <View style={styles.viewHeader}>
-                    <Text style={styles.txtOpc1} onPress={() => destNavegation()}>Bolo simples e fofo</Text>
-                </View>
-            </View>
+            ))}
 
         </View>
     );

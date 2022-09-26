@@ -20,9 +20,8 @@ export default function EditPage({ navigation }){
 
 
     useEffect(() => {
-        Axios.get(`http://localhost:3000/${navigation.state.params.id}`) //it gets the correspondent data from the displayed screen
+        Axios.get(`http://localhost:3000/${navigation.state.params.id}`)
             .then((response) => {
-                console.log(response)
                 setTitulo(response.data.titulo)
                 setIng(response.data.ing)
                 setModo(response.data.modo)   
@@ -31,18 +30,23 @@ export default function EditPage({ navigation }){
     }, [])
 
     function updateData(){
-/*         Axios.post('http://localhost:3000/updateData', {
+        Axios.put('http://localhost:3000/updateData', {
             id : navigation.state.params.id,
             titulo : sendtitulo,
             ing : sending,
             modo : sendmodo
-        }).then((response) => console.log(response))
-        .catch((err) => console.log(err)) */
+        }).then((response) =>{
+            if(response.data == 'Dado att'){
+                navigation.navigate("Home")
+            }
+            })
+        .catch((err) => console.log(err))
     }
 
 
     return(
         <SafeAreaView>
+            <Text onPress={() => navigation.navigate("Home")}>⬅</Text>
             <Image 
             style={{
                 height: 300,

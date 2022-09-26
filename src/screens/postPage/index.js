@@ -4,7 +4,7 @@ import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import styles from '../Home/style'
 import Axios from 'axios'
 
-export default function PostPage(){
+export default function PostPage({ navigation }){
 
     const [img, setImg] = useState(null)
     const [titulo, setTitulo] = useState('')
@@ -28,6 +28,7 @@ export default function PostPage(){
 
     return(
         <View>
+            <Text onPress={() => navigation.navigate("Home")}>⬅</Text>
             <input type='file' onChange={e => setImg(e.target.files[0])}/> 
             <TextInput onChangeText={titulo => setTitulo(titulo)} value={titulo}/>
             <TextInput onChangeText={ing => setIng(ing)} value={ing}/>

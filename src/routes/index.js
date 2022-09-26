@@ -8,8 +8,13 @@ import EditPage from "../screens/EditPage";
 import HomeVi from '../screens/HomeVi';
 import BolosVi from '../screens/BolosVi';
 import PostPage from "../screens/postPage";
+import RecipePage from "../screens/recipePage";
 
 const Rotas = {
+  Login: {
+    nome: "Login",
+    screen: Login,
+  },
 
   Home: {
     nome: "Home",
@@ -21,10 +26,6 @@ const Rotas = {
     screen: EditPage
   },
 
-  Login: {
-    nome: "Login",
-    screen: Login,
-  },
   
   Cadastro: {
     nome: "Cadastro",
@@ -50,6 +51,11 @@ const Rotas = {
   PostPage:{
     nome : "PostPage",
     screen : PostPage
+  },
+
+  RecipePage:{
+    nome:"RecipePage",
+    screen:RecipePage
   },
   
 };

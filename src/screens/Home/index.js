@@ -53,7 +53,7 @@ function Option({ navigation }) {
             <Header />
 
             <View style={styles.viewMsg}>
-                <Text style={styles.seta} onPress={() => back()}>⬅</Text>
+                <Text style={styles.seta} onPress={() => navigation.navigate("Login")}>⬅</Text>
             </View>
 
             <View style={styles.viewMsg}>
@@ -72,8 +72,21 @@ function Option({ navigation }) {
                     source={{ uri: `http://localhost:3000/${index}.png` }}
                 />
             <View style={styles.viewContainer}>
-                <TouchableOpacity style={styles.btn} title="Cadastro" onPress={() => back(index)}>
-                    <Text style={styles.txtBtn}>Editar</Text>
+                <TouchableOpacity style={{
+                    width: '50%',
+                    borderColor: '#E398AA',
+                    borderWidth: 2,
+                    borderRadius: 40,
+                    height: '60%',
+                    marginBottom: '10%',
+                    textAlign: 'center',
+                }} title="Cadastro" onPress={() => back(index)}>
+                    <Text style={{
+                        color: '#E398AA',
+                        fontWeight: 600,
+                        fontSize: 20,
+                        marginTop: 7,
+                    }}>Editar</Text>
                 </TouchableOpacity>
             </View>
                 </View>
