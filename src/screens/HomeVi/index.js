@@ -51,22 +51,25 @@ function HomeVi({ navigation }) {
                     <Image source={{uri : `http://localhost:3000/${index}.png`}} style={{
                         width: 300,
                         height: 300,
-                    }}/>
+                        marginLeft: '10%',
+                        }}/>
             <View style={styles.viewContainer}>
                 <TouchableOpacity style={{
-                    width: '50%',
+                    width: '80%',
                     borderColor: '#E398AA',
                     borderWidth: 2,
                     borderRadius: 40,
-                    height: '60%',
+                    height: '40%',
+                    marginLeft: '10%',
                     marginBottom: '10%',
                     textAlign: 'center',
+                    marginTop: '5%',
                 }} title="Cadastro" onPress={() => recipePage(index)}>
                     <Text style={{
                         color: '#E398AA',
                         fontWeight: 600,
                         fontSize: 20,
-                        marginTop: 7,
+                        marginTop: 1,
                     }}>Ver receita</Text>
                 </TouchableOpacity>
             </View>

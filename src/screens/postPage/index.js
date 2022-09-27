@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
-import styles from '../Home/style'
+import styles from './styles'
 import Axios from 'axios'
 
 export default function PostPage({ navigation }){
@@ -27,13 +27,22 @@ export default function PostPage({ navigation }){
     }
 
     return(
-        <View>
-            <Text onPress={() => navigation.navigate("Home")}>⬅</Text>
+        <View style={styles.contAdd}>
+            <Text style={styles.seta} onPress={() => navigation.navigate("Home")}>⬅</Text>
+
+            <Text style={styles.contName}>Imagem da receita:</Text>
             <input type='file' onChange={e => setImg(e.target.files[0])}/> 
-            <TextInput onChangeText={titulo => setTitulo(titulo)} value={titulo}/>
-            <TextInput onChangeText={ing => setIng(ing)} value={ing}/>
-            <TextInput onChangeText={modo => setModo(modo)} value={modo}/>
-            <TouchableOpacity onPress={Submit}><Text>Teste</Text></TouchableOpacity>
+
+            <Text style={styles.contName}>Nome da receita:</Text>
+            <TextInput style={styles.input} onChangeText={titulo => setTitulo(titulo)} value={titulo}/>
+
+            <Text>Ingredientes:</Text>
+            <TextInput style={styles.input2} onChangeText={ing => setIng(ing)} value={ing}/>
+
+            <Text>Modo de Preparo:</Text>
+            <TextInput style={styles.input2} onChangeText={modo => setModo(modo)} value={modo}/>
+
+            <TouchableOpacity style={styles.btnSub} onPress={Submit}><Text style={styles.txtBtn}>Adicionar</Text></TouchableOpacity>
         </View>
     );
 }

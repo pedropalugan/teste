@@ -58,7 +58,7 @@ function Option({ navigation }) {
 
             <View style={styles.viewMsg}>
                 <TouchableOpacity onPress={() => navigation.navigate("PostPage")}>
-                    <Text>Add +</Text>
+                    <Text style={styles.add}>Add +</Text>
                 </TouchableOpacity>
                 <Text style={styles.msgOla}>Olá, Matheus</Text>
                 <Text style={styles.txtBemVindo}>Bem-vindo ao app de receitas InfoBolos</Text>
@@ -68,24 +68,27 @@ function Option({ navigation }) {
                 <Image key={index} style={{
                     width: 300,
                     height: 300,
+                    marginLeft: "10%",
                 }}
                     source={{ uri: `http://localhost:3000/${index}.png` }}
                 />
             <View style={styles.viewContainer}>
                 <TouchableOpacity style={{
-                    width: '50%',
+                    width: '80%',
                     borderColor: '#E398AA',
                     borderWidth: 2,
                     borderRadius: 40,
-                    height: '60%',
+                    height: '40%',
+                    marginLeft: '10%',
                     marginBottom: '10%',
                     textAlign: 'center',
+                    marginTop: '5%',
                 }} title="Cadastro" onPress={() => back(index)}>
                     <Text style={{
                         color: '#E398AA',
                         fontWeight: 600,
                         fontSize: 20,
-                        marginTop: 7,
+                        marginTop: 1,
                     }}>Editar</Text>
                 </TouchableOpacity>
             </View>

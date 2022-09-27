@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
       color: "#E398AA",
       marginTop: 25
     },
+    add:{
+      backgroundColor: "#E398AA",
+      width: 60,
+      paddingLeft: 10,
+      borderRadius: 10
+    },
     txtBemVindo:{
       fontSize: 19,
       color: "#E398AA",
